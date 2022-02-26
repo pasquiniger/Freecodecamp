@@ -5,7 +5,7 @@ const express = require('express'),
     notFound = require('./middleware/not-found.js'),
     errorHandlerMiddleware = require('./middleware/error-handler.js'),
     app = express(),
-    PORT = 3000
+    port = process.env.PORT || 3000
 
 require('dotenv').config()
 
@@ -39,7 +39,7 @@ const start = async()=>{
     try {
         await connectDB(process.env.MONGO_URI)
         console.log('Connected to DB')
-        app.listen(PORT, ()=> console.log(`Server listening at port ${PORT}`))
+        app.listen(port, ()=> console.log(`Server listening at port ${port}`))
     } catch (error) {
         console.log(error)
     }
